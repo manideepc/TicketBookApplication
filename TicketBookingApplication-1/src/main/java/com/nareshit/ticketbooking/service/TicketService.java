@@ -6,6 +6,8 @@ import com.nareshit.ticketbooking.model.Ticket;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 /*
 
@@ -31,5 +33,22 @@ public class TicketService {
         /*
         Save method will insert and Update the Database.
          */
+    }
+    public Ticket getByTicket(Integer ticketId)
+    {
+        return ticketDao.findById(ticketId).orElse(new Ticket());
+    }
+    //Delete ticket
+    public void deleteTicket(Integer ticketId)
+    {
+        ticketDao.deleteById(ticketId);
+
+    }
+    //Update Ticket
+    public Ticket updateTicket(Integer ticketId, String newEmail)
+    {
+        Ticket dbTicketObj = getByTicket(ticketId);
+        dbTicketObj.setEmail(newEmail);
+        return ticketDao.save(dbTicketObj);
     }
 }
