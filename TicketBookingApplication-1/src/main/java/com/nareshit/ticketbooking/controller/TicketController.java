@@ -6,6 +6,8 @@ import com.nareshit.ticketbooking.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import static java.awt.SystemColor.info;
+
 @RestController
 @RequestMapping(value="/tickets") //http://localhost:8080/tickets
 public class TicketController {
@@ -25,7 +27,6 @@ public class TicketController {
     //http://localhost:8080/tickets/create
     public Ticket createTicket(@RequestBody Ticket ticketObj)
     {
-
             return ticketService.createTicket(ticketObj);
     }
 
